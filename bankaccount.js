@@ -221,7 +221,7 @@ class bankAccount {
 	});
 	let result = [];
 	for(let i=0;i<names.length;i++) {
-	    result.push(bankAccount.accounts[names[i]]); /
+	    result.push(bankAccount.accounts[names[i]]);
 	}
 	return result;
     }
@@ -236,7 +236,7 @@ class bankAccount {
      */
     static totalCapital() {
 	let countedCapital = 0;
-        var accArray = bankAccount.getAccountsAsArray()
+        var accArray = bankAccount.getAccountsAsArray();
 	for (let i=0; i<accArray.length; ++i) {
             countedCapital = accArray.balance[i];
         }
@@ -256,11 +256,17 @@ class bankAccount {
      * 
      * @returns {Array}
      */
-    static currentLedger() {
+ static currentLedger() {
 	let results = [];
+        var accountArray = bankAccount.getAccountsAsArray();
+        for (let i=0; i<accountArray.length; i++){
+            results[i] = {accountNumber:accountArray[i].accountNumber, owner:accountArray[i].ownerName,balance:accountArray[i].balance};   
+        }  
+        
 	return results;
-    }
 }
+}
+
 
 let centralAcct = bankAccount.createAccount("CENTRAL BANK ACCOUNT","2018-02-16","-").changeBalance(10000000,"Mafia Plc",bankAccount.createTransactionId(),"initial funds");
 let BandisAccount = bankAccount.createAccount("KEMÉNY ANDRÁS ISTVÁN","1975-02-15","psst secret").changeBalance(50000,"ATM03223",bankAccount.createTransactionId(),"cash deposit");
