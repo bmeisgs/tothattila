@@ -8,8 +8,10 @@ let somethingA = 2;
 let somethingB = false;
 let somethingC = "don't know what to write";
 let somethingD = [somethingA,somethingB, somethingC];
-let somethingE = {somethingA, somethingC};
+let somethingE = {somethingA:somethingA, somethingB:somethingB, somethingC:somethingC};
 
+console.log(somethingD);
+console.log(somethingE);
 
 
 
